@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        Hours:
+        <input type="text" id="hrs" name="hrs" />
+      </div>
+      <br />
+      <div>
+        Minutes:
+        <input type="text" id="mns" name="mns" />
+      </div>
+      <br />
+      <div>
+        Seconds:
+        <input type="text" id="scs" name="scs" />
+      </div>
+      <br />
+      <button id="btnct" value="START" onclick="countdownTimer()">
+        Countdown
+      </button>
+    </form>
+    Countdown Timer: &nbsp; <span id="showhrs">00</span>:<span id="showmns"
+      >00</span
+    >:<span id="showscs">00</span>
+
+    <script type="text/javascript">
+      /* Function to display a Countdown timer with starting time from a form */
+
+      let hoursCounter = 0;
+      let minutesCounter = 0;
+      let secondsCounter = 0;
+      let startchr = 0;
+
+      function countdownTimer() {
+        if (
+          startchr == 0 &&
+          document.getElementById("hrs") &&
+          document.getElementById("mns") &&
+          document.getElementById("scs")
+        ) {
+          hoursCounter = parseInt(document.getElementById("hrs").value) + 0;
+          minutesCounter = parseInt(document.getElementById("mns").value) + 0;
+          secondsCounter = parseInt(document.getElementById("scs").value) * 1;
+
+          if (isNaN(hoursCounter)) hoursCounter = 0;
+          if (isNaN(minutesCounter)) minutesCounter = 0;
+          if (isNaN(secondsCounter)) secondsCounter = 0;
+
+          document.getElementById("hrs").value = hoursCounter;
+          document.getElementById("mns").value = minutesCounter;
+          document.getElementById("scs").value = secondsCounter;
+          startchr = 1;
+          document.getElementById("btnct").setAttribute("disabled", "disabled"); // disable the button
+        }
+
+        if (minutesCounter == 0 && secondsCounter == 0) {
+          startchr = 0;
+          document.getElementById("btnct").removeAttribute("disabled");
+
+          return false;
+        } else {
+          // decrease seconds, and decrease minutes if seconds reach to 0
+          secondsCounter--;
+          if (secondsCounter < 0) {
+            if (minutesCounter > 0) {
+              secondsCounter = 59;
+              minutesCounter--;
+            } else {
+              secondsCounter = 0;
+              minutesCounter = 0;
+            }
+          }
+        }
+
+        document.getElementById("showhrs").innerHTML = hoursCounter;
+        document.getElementById("showmns").innerHTML = minutesCounter;
+        document.getElementById("showscs").innerHTML = secondsCounter;
+        setTimeout("countdownTimer()", 1000);
+      }
+    </script>
+  </body>
+</html>
