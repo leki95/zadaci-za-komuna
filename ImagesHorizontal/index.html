@@ -7,16 +7,24 @@
     <link rel="stylesheet" href="index.css" type="text/css" />
     <title>Image title</title>
     <style>
+      /*.row {
+        display: flex;
+      }*/
       .imageContainer {
         position: relative;
         text-align: center;
         color: white;
+        margin: 10px 10px;
+        float: left;
       }
 
       .loremtext {
         position: absolute;
-        bottom: 8px;
-        left: 16px;
+        bottom: -10px;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.5);
+        color: #f1f1f1;
+        width: 100%;
       }
     </style>
   </head>
@@ -33,22 +41,20 @@
     <hr />
     Desired solution
     <br />
-    <div class="imageContainer">
-      <img src="dog1.jpg" style="display: inline-block" />
-      <div class="loremtext">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione
-        dolores neque accusantium incidunt hic dolorem minus impedit ipsam
-        laborum cupiditate nam, at rerum, praesentium sequi, consequatur nostrum
-        pariatur dicta aut.
+    <div class="row">
+      <div class="imageContainer">
+        <img src="dog1.jpg" style="width: 100%" />
+        <p class="loremtext">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione
+          dolores neque accusantium incidunt hic dolorem
+        </p>
       </div>
-    </div>
-    <div class="imageContainer">
-      <img src="dog3.jpg" style="display: inline-block" />
-      <div class="loremtext">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione
-        dolores neque accusantium incidunt hic dolorem minus impedit ipsam
-        laborum cupiditate nam, at rerum, praesentium sequi, consequatur nostrum
-        pariatur dicta aut.
+      <div class="imageContainer">
+        <img src="dog3.jpg" style="width: 100%" />
+        <p class="loremtext">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione
+          dolores neque accusantium incidunt hic dolorem
+        </p>
       </div>
     </div>
   </body>
